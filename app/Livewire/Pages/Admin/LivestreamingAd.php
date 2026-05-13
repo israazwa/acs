@@ -7,6 +7,8 @@ use App\Models\VideoPelajaran;
 use App\Models\Pelajaran;
 use App\Models\ChatVideo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 use Livewire\Attributes\Layout;
 #[Layout('layouts.admin')]
@@ -28,6 +30,37 @@ class LivestreamingAd extends Component
     /**
      * Kirim pesan ke chat
      */
+    public function sendNotificationEmail()
+    {
+        $videoAktif = \App\Models\VideoPelajaran::whereNotNull('streaming_url')
+            ->latest()
+            ->first();
+
+        if (!$videoAktif) {
+            $this->dispatch('notify', message: 'Tidak ada livestreaming aktif.');
+            return;
+        }
+
+        $users = \App\Models\User::where('sekolah_id', Auth::user()->sekolah_id)->get();
+
+        foreach ($users as $user) {
+            try {
+                Mail::send('email.notifikasiLive', ['video' => $videoAktif, 'user' => $user], function ($message) use ($user) {
+                    $message->to($user->email)
+                        ->subject('Notifikasi Livestreaming Sedang Berlangsung');
+                });
+            } catch (\Exception $e) {
+                Log::error("Gagal kirim email ke {$user->email}: " . $e->getMessage());
+                $this->dispatch('notify', message: "Gagal mengirim email ke {$user->email}");
+            }
+        }
+
+        $this->dispatch('reset-sending');
+        $this->dispatch('notify', message: 'Email notifikasi berhasil dikirim!');
+    }
+
+
+
     public function sendMessage()
     {
         if ($this->muteChat)

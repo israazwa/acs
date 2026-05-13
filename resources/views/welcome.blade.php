@@ -21,8 +21,10 @@
                 <div class="bg-gradient-to-b from-gray-200 to-orange-50">
                     @include('unlogin.hero')
                 </div>
-                @include('unlogin.feature')
-                @include('unlogin.about')                
+                <div class="bg-gradient-to-b from-orange-50 to-orange-300">
+                    @include('unlogin.feature')
+                    @include('unlogin.about')
+                </div>                
             </main>
             @include('unlogin.footer')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

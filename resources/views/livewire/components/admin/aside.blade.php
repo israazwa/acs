@@ -82,6 +82,7 @@
                             <li><a wire:navigate href="/admin/pelajaran" class="block py-2 text-gray-200 hover:text-white">Mata Pelajaran</a></li>
                             <li><a wire:navigate href="/admin/livestreaming" class="block py-2 text-gray-200 hover:text-white">Livestreaming</a></li>
                             <li><a wire:navigate href="" class="block py-2 text-gray-200 hover:text-white">Recorded</a></li>
+                            <li><a wire:navigate href="/admin/ujian" class="block py-2 text-gray-200 hover:text-white">CRUD Ujian</a></li>
                         </ul>
                     </li>
                     <li x-data="{ openUser: false }" class="list-none">

@@ -8,7 +8,7 @@ use App\Models\Pelajaran;
 use Illuminate\Support\Facades\Auth;
 
 use Livewire\Attributes\Layout;
-#[Layout('layouts.kelas')]
+#[Layout('layouts.app')]
 class Dashboard extends Component
 {
 

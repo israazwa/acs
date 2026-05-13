@@ -1,4 +1,4 @@
-<section class="bg-gradient-to-b from-orange-50 to-orange-100 py-10">
+<section class=" py-10">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="text-center max-w-3xl mx-auto" data-aos="fade-down">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">

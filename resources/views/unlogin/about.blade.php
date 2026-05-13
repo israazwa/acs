@@ -1,4 +1,4 @@
-<section class="bg-orange-100 py-16">
+<section class=" py-16">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="flex flex-col lg:flex-row items-center gap-12">
 

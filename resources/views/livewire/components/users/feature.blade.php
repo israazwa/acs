@@ -1,40 +1,74 @@
 <div>
-    <section class="p-6 bg-gray-100 rounded-lg shadow-lg">
-        <h2 class="text-lg font-bold text-gray-800 mb-5">Fitur Cepat Siswa</h2>
-
+    <section class="p-16 rounded-lg ">
+        <div class="text-center p-8">    
+            <h2 data-aos="fade-up" data-aos-delay="200" class="text-center text-3xl font-extrabold tracking-wide uppercase text-orange-600" data-aos="fade-up">
+             Fitur
+            </h2>
+            <div class="flex justify-center mt-2" data-aos="fade-up" data-aos-delay="200">
+                <span class="inline-block w-32 h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-full"></span>
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Masuk Kelas -->
-            <a href="/"
-               class="flex flex-col items-center justify-center p-6 bg-white hover:bg-orange-50 rounded-lg shadow transition">
-                <!-- Heroicon: Academic Cap -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-orange-500 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-4-6v6m8-6v6" />
-                </svg>
-                <p class="text-base font-semibold text-gray-700">Masuk Kelas</p>
+            <div x-data="{ showModal: false }" data-aos="fade-up">
+                @if($videoAktif)
+                    <!-- Jika ada livestreaming -->
+                    <a href="/livestreaming" 
+                    class="flex flex-col items-center justify-center p-6 rounded-lg shadow-lg hover:bg-indigo-300 hover:text-indigo-600
+                            bg-orange-600 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
+                            <img src="{{ asset('play.svg') }}" alt="Live Streaming" class="w-8 h-8">
+                        </div>
+                        <p class="text-base font-semibold">Live Streaming</p>
+                        <p class="text-sm font-mono">Livestreaming {{ $videoAktif->judul_video }}</p>
+                    </a>
+                @else
+                    <!-- Jika tidak ada livestreaming -->
+                    <a @click="showModal = true"
+                            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-lg
+                                hover:shadow-2xl hover:scale-105 hover:bg-gray-500 hover:text-white transition-all duration-300 ease-in-out">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
+                            <img src="{{ asset('play.svg') }}" alt="Live Streaming" class="w-8 h-8">
+                        </div>
+                        <p class="text-base font-semibold">Live Streaming</p>
+                        <p class="text-sm text-center">Tidak ada livestreaming yang berlangsung</p>
+                    </a>
+
+                    <!-- Modal -->
+                    <div x-show="showModal" x-transition
+                        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                        <div class="bg-white rounded-lg shadow-lg p-6 w-80 text-center">
+                            <h2 class="text-lg font-bold text-gray-800 mb-4">Informasi</h2>
+                            <p class="text-gray-600 mb-6">Saat ini tidak ada live streaming yang tersedia.</p>
+                            <button @click="showModal = false"
+                                    class="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition">
+                                Tutup
+                            </button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <a href="/kelas" data-aos="fade-up" data-aos-delay="600"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-lg 
+                    transform hover:scale-105 hover:bg-orange-600 hover:text-white 
+                    transition-all duration-300 ease-in-out">
+                <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
+                    <img src="{{ asset('class.svg') }}" alt="Daftar Kelas" class="w-8 h-8">
+                </div>
+                <p class="text-base font-semibold">Daftar Kelas</p>
             </a>
 
-            <!-- Lihat Pelajaran -->
-            <a href="/"
-               class="flex flex-col items-center justify-center p-6 bg-white hover:bg-orange-50 rounded-lg shadow transition">
-                <!-- Heroicon: Book Open -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-orange-500 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 6v12m8-6H4m16 0a9 9 0 01-18 0 9 9 0 0118 0z" />
-                </svg>
-                <p class="text-base font-semibold text-gray-700">Pelajaran</p>
+            <!-- Ujian -->
+            <a href="/ujian" data-aos="fade-up" data-aos-delay="800"
+            class="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-lg 
+                    transform hover:scale-105 hover:bg-orange-600 hover:text-white 
+                    transition-all duration-300 ease-in-out">
+                <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
+                    <img src="{{ asset('sqpen.svg') }}" alt="Ujian" class="w-8 h-8">
+                </div>
+                <p class="text-base font-semibold">Ujian</p>
             </a>
 
-            <!-- Nilai & Hasil Test -->
-            <a href="/"
-               class="flex flex-col items-center justify-center p-6 bg-white hover:bg-orange-50 rounded-lg shadow transition">
-                <!-- Heroicon: Chart Bar -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-orange-500 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M3 3v18h18M9 17V9m4 8V5m4 12v-3" />
-                </svg>
-                <p class="text-base font-semibold text-gray-700">Nilai</p>
-            </a>
         </div>
     </section>
 </div>

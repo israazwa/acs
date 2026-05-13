@@ -87,7 +87,7 @@ new #[Layout('layouts.guest')] class extends Component
                                 </x-primary-button>
 
                                 <!-- Tombol login dengan Google -->
-                                <a href="#"
+                                <a href="{{ route('auth.google') }}"
                                 class="relative overflow-hidden flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white hover:bg-indigo-50 transition duration-300 ease-in-out group">
                                     <img src="{{ asset('google.png') }}" alt="Google" class="w-5 h-5">
                                     <span class="text-sm font-medium text-gray-700">Login dengan Google</span>
