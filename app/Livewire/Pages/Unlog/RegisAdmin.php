@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Pages\Unlog;
 
-use Livewire\Attributes\Layout;
+
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\requestAdmin;
 use Illuminate\Support\Facades\Hash;
-
+use Livewire\Attributes\Layout;
 #[Layout('layouts.guest')]
 class RegisAdmin extends Component
 {

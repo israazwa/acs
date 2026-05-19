@@ -23,4 +23,9 @@ class pelajaran extends Model
     {
         return $this->belongsTo(Sekolah::class);
     }
+    public function soals()
+    {
+        return $this->hasMany(Soal::class);
+    }
+
 }

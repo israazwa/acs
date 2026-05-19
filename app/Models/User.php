@@ -33,5 +33,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Sekolah::class);
     }
+    public function jawabanSiswa()
+    {
+        return $this->hasMany(JawabanSiswa::class);
+    }
+    public function examAnswers()
+    {
+        return $this->hasMany(jawabanSiswa::class);
+    }
+
+    public function examResults()
+    {
+        return $this->hasMany(hasilTest::class);
+    }
+
 
 }

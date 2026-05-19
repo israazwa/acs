@@ -20,19 +20,30 @@ class GoogleController extends Controller
             $user = User::where('email', $googleUser->getEmail())->first();
 
             if (!$user) {
-                // Jika belum ada, buat user baru
+                // Buat user baru tanpa sekolah_id dulu
                 $user = User::create([
                     'name' => $googleUser->getName(),
                     'email' => $googleUser->getEmail(),
                     'password' => bcrypt(str()->random(16)), // password random
+                    'sekolah_id' => null,
+                    'kode_unik' => null,
+                    'role' => 'siswa',
                 ]);
             }
 
-            Auth::login($user);
+            // Kalau user belum punya kode_unik/sekolah_id → redirect ke form input kode unik
+            if (empty($user->kode_unik) || empty($user->sekolah_id)) {
+                session(['google_user' => $googleUser]);
+                return redirect()->route('kodeunik');
+            }
 
+            // Kalau sudah punya kode unik → langsung login
+            Auth::login($user);
             return redirect('/dashboard');
+
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'Login dengan Google gagal.');
         }
     }
+
 }

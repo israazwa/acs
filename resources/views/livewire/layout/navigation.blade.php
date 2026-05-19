@@ -31,11 +31,8 @@ new class extends Component
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
                     Dashboard
                 </x-nav-link>
-                <x-nav-link :href="route('video')" :active="request()->routeIs('video')" wire:navigate>
-                    Video Pembelajaran
-                </x-nav-link>
                 <x-nav-link :href="route('kelas')" :active="request()->routeIs('kelas')" wire:navigate>
-                    Daftar Kelas
+                    Video Pembelajaran
                 </x-nav-link>
                 <x-nav-link :href="route('ujian')" :active="request()->routeIs('ujian')" wire:navigate>
                     Ujian
@@ -89,11 +86,8 @@ new class extends Component
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
                 Dashboard
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('video')" wire:navigate>
-                Video Pembelajaran
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kelas')" wire:navigate>
-                Daftar Kelas
+                Video Pembelajaran
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('ujian')" wire:navigate>
                 Ujian

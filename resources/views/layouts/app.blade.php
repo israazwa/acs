@@ -77,7 +77,7 @@
 
         window.addEventListener('load', hideSpinner);
 
-        setTimeout(hideSpinner, 1000);
+        setTimeout(hideSpinner, 500);
     </script>
     
 </body>

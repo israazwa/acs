@@ -18,10 +18,18 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->form->authenticate();
 
+        // regenerate session
         Session::regenerate();
 
+        // cek apakah user punya kode_unik
+        $user = auth()->user();
+        if (empty($user->kode_unik)) {
+            $this->redirect(route('kodeunik', absolute: false), navigate: true);
+            return;
+        }
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
+
 }; ?>
 
 <div>

@@ -15,6 +15,7 @@ class sekolah extends Model
         'alamat',
         'kode_unik',
         'admin_id',
+        'pengumuman',
     ];
     public function pelajarans()
     {

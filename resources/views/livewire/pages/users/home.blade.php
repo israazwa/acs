@@ -1,6 +1,6 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <div class="bg-gradient-to-b from-gray-50 to-gray-200">
+    <div class="bg-gradient-to-b from-gray-100 to-gray-200">
         @include('livewire.components.users.hero')
     </div>
     <div class="bg-gradient-to-b from-gray-200 to-orange-300">

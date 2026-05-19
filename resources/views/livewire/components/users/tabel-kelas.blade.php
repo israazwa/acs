@@ -7,7 +7,7 @@
             <span class="inline-block w-52 h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-full"></span>
         </div>
         <p class="text-center text-gray-600 mt-3 text-sm" data-aos="fade-up" data-aos-delay="400">
-            Pilih pelajaran yang tersedia di sekolahmu
+            Pilih pelajaran yang tersedia
         </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-20 py-2" data-aos="fade-up">

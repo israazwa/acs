@@ -58,7 +58,6 @@ class CrudUjian extends Component
     public function resetInput()
     {
         $this->soal_id = null;
-        $this->pelajaran_id = null;
         $this->pertanyaan = null;
         $this->jawabanList = [];
         $this->jawabanBenarIndex = null;

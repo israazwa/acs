@@ -47,39 +47,42 @@
 
     <!-- Panel kanan -->
 
-    <div class="md:col-span-4 bg-gray-800 text-white rounded-lg p-6">
-       <div x-data="{ sending: false, message: '' }"
-        x-on:notify.window="message = $event.detail.message; sending = false; setTimeout(() => message = '', 3000)"
-        x-on:reset-sending.window="sending = false"
-        class="flex flex-col items-center space-y-4">
-
-        <!-- Tombol Kirim -->
-        <button @click="sending = true; $wire.sendNotificationEmail()"
-                class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow 
-                    hover:bg-orange-700 hover:shadow-lg transform hover:scale-105 
-                    transition-all duration-300 ease-in-out">
-            <template x-if="!sending">
-                <span>Kirim Notifikasi</span>
-            </template>
-            <template x-if="sending">
-                <span class="flex items-center gap-2">
-                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                    </svg>
-                    Mengirim...
-                </span>
-            </template>
-        </button>
-
-        <!-- Toast Notification -->
-        <template x-if="message">
-            <div x-transition
-                class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg">
-                <span x-text="message"></span>
+        <div class="md:col-span-4 bg-gray-800 text-white rounded-lg p-6">
+            <div class="text-center font-semibold my-5">
+                <p>Kirim Notifikasi Email</p>
             </div>
-        </template>
-    </div>
+        <div x-data="{ sending: false, message: '' }"
+            x-on:notify.window="message = $event.detail.message; sending = false; setTimeout(() => message = '', 3000)"
+            x-on:reset-sending.window="sending = false"
+            class="flex flex-col items-center space-y-4">
+
+            <!-- Tombol Kirim -->
+            <button @click="sending = true; $wire.sendNotificationEmail()"
+                    class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow 
+                        hover:bg-orange-700 hover:shadow-lg transform hover:scale-105 
+                        transition-all duration-300 ease-in-out">
+                <template x-if="!sending">
+                    <span>Kirim Notifikasi</span>
+                </template>
+                <template x-if="sending">
+                    <span class="flex items-center gap-2">
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                        Mengirim...
+                    </span>
+                </template>
+            </button>
+
+            <!-- Toast Notification -->
+            <template x-if="message">
+                <div x-transition
+                    class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+                    <span x-text="message"></span>
+                </div>
+            </template>
+        </div>
 
     </div>
 

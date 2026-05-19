@@ -14,7 +14,7 @@
                     <!-- Jika ada livestreaming -->
                     <a href="/livestreaming" 
                     class="flex flex-col items-center justify-center p-6 rounded-lg shadow-lg hover:bg-indigo-300 hover:text-indigo-600
-                            bg-orange-600 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out">
+                            bg-white  hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out">
                         <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
                             <img src="{{ asset('play.svg') }}" alt="Live Streaming" class="w-8 h-8">
                         </div>
@@ -55,7 +55,7 @@
                 <div class="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-3">
                     <img src="{{ asset('class.svg') }}" alt="Daftar Kelas" class="w-8 h-8">
                 </div>
-                <p class="text-base font-semibold">Daftar Kelas</p>
+                <p class="text-base font-semibold">Daftar Video</p>
             </a>
 
             <!-- Ujian -->

@@ -82,7 +82,41 @@
                             <li><a wire:navigate href="/admin/pelajaran" class="block py-2 text-gray-200 hover:text-white">Mata Pelajaran</a></li>
                             <li><a wire:navigate href="/admin/livestreaming" class="block py-2 text-gray-200 hover:text-white">Livestreaming</a></li>
                             <li><a wire:navigate href="" class="block py-2 text-gray-200 hover:text-white">Recorded</a></li>
+                        </ul>
+                    </li>
+                     <li x-data="{ openProduk: false }" class="list-none">
+                        <button 
+                            class="w-full flex items-center justify-between px-6 py-3 hover:bg-gray-800"
+                            @click="openProduk = !openProduk"
+                            :aria-expanded="openProduk"
+                        >
+                            <span class="flex items-center gap-2">
+                                <i class="fas fa-box-open w-6"></i>Ujian
+                            </span>
+
+                            <!-- Penanda dropdown -->
+                            <svg class="w-4 h-4 transform transition-transform duration-300"
+                                :class="{ 'rotate-180': openProduk }"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <ul 
+                            x-show="openProduk"
+                            x-collapse
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-2"
+                            class="pl-12 space-y-1 bg-gray-900/80"
+                        >
                             <li><a wire:navigate href="/admin/ujian" class="block py-2 text-gray-200 hover:text-white">CRUD Ujian</a></li>
+                            <li><a wire:navigate href="/admin/hasil/ujian" class="block py-2 text-gray-200 hover:text-white">Hasil Ujian</a></li>
                         </ul>
                     </li>
                     <li x-data="{ openUser: false }" class="list-none">

@@ -12,6 +12,7 @@ class jawabanSiswa extends Model
         'soal_id',
         'jawaban',
         'is_benar',
+        'jawaban_id',
         'skor'
     ];
 
