@@ -38,12 +38,23 @@
             </div>
 
             <div>
-                <label class="text-sm text-gray-200">Streaming URL</label>
-                <input type="url" wire:model="streaming_url"
-                       class="w-full rounded-md bg-gray-800 text-gray-100 border border-gray-700 px-2 py-2"
-                       placeholder="https://...">
+                <label class="text-sm text-gray-200">Platform Streaming</label>
+                <select wire:model="platform" required
+                        class="w-full rounded-md bg-gray-800 text-gray-100 border border-gray-700 px-2 py-2">
+                    <option value="">-- Pilih Platform --</option>
+                    <option value="yt">YouTube</option>
+                    <option value="custom">Custom URL</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-200">Streaming URL / Video ID</label>
+                <input type="text" wire:model="streaming_url"
+                    class="w-full rounded-md bg-gray-800 text-gray-100 border border-gray-700 px-2 py-2"
+                    placeholder="Masukkan URL atau Video ID">
                 @error('streaming_url') <span class="text-red-400 text-sm">{{ $message }}</span> @enderror
             </div>
+
 
             <div>
                 <label class="text-sm text-gray-200">Deskripsi</label>

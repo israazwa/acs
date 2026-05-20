@@ -20,7 +20,7 @@ class LivestreamingAd extends Component
     public $newMessage;
     public $viewerCount = 0;
     public $muteChat = false;
-
+    public $platform;
     // Form input untuk admin
     public $pelajaran_id;
     public $judul_video;
@@ -136,14 +136,25 @@ class LivestreamingAd extends Component
         $this->validate([
             'pelajaran_id' => 'required|exists:pelajarans,id',
             'judul_video' => 'required|string|max:255',
-            'streaming_url' => 'required|url',
+            'streaming_url' => 'required|string',
             'deskripsi' => 'nullable|string',
         ]);
 
+        // Konversi URL jika platform YouTube
+        $finalUrl = $this->streaming_url;
+        if ($this->platform === 'yt') {
+            $videoId = basename(parse_url($this->streaming_url, PHP_URL_PATH));
+            if (str_contains($this->streaming_url, 'watch?v=')) {
+                parse_str(parse_url($this->streaming_url, PHP_URL_QUERY), $query);
+                $videoId = $query['v'] ?? $videoId;
+            }
+            $finalUrl = "https://www.youtube.com/embed/" . $videoId;
+        }
+
         $video = VideoPelajaran::create([
             'pelajaran_id' => $this->pelajaran_id,
-            'judul_video' => $this->judul_video,
-            'streaming_url' => $this->streaming_url,
+            'judul_video' => $this->judul_video,   // tetap judul teks
+            'streaming_url' => $finalUrl,          // simpan embed URL
             'deskripsi' => $this->deskripsi,
         ]);
 
@@ -153,6 +164,7 @@ class LivestreamingAd extends Component
 
         session()->flash('success', 'Livestream berhasil diset!');
     }
+
 
     /**
      * Load chat messages

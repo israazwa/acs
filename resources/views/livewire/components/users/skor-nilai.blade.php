@@ -1,11 +1,12 @@
 
 <section>
 
-    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-orange-200 py-8 px-4 shadow-2xl">
+    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-orange-200 py-8 px-4 shadow-xl">
         <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 mt-10">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
                 Hasil Ujian <br> {{ $pelajaran->nama_pelajaran }}
             </h2>
+            <div class="border-t border-gray-200 mb-10"></div>
 
             @if($hasil)
                 <div class="flex flex-col md:flex-row items-center md:items-start md:justify-between gap-6">
@@ -45,11 +46,11 @@
             <!-- Tombol Navigasi -->
             <div class="mt-8 flex justify-center space-x-3">
                 <a href="{{ route('dashboard') }}" 
-                class="bg-blue-600 hover:bg-orange-700 text-white px-5 py-2 rounded-md font-semibold transition">
+                class="px-12 py-3 text-lg font-semibold text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-100 hover:border-indigo-500 hover:text-indigo-500 hover:shadow-2xl transition">
                     Dashboard
                 </a>
                 <a href="{{ route('ujian') }}" 
-                class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-5 py-2 rounded-md font-semibold transition">
+                class="px-12 py-3 text-lg font-semibold text-orange-600 border border-orange-600 rounded-lg hover:bg-orange-100 hover:border-orange-500 hover:text-orange-500 hover:shadow-2xl transition">
                     List Ujian
                 </a>
             </div>

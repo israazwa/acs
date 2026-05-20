@@ -5,7 +5,7 @@
     <!-- Notifikasi di atas tabel -->
     <template x-if="message">
         <div x-transition.opacity
-             class="mb-4 bg-green-600/90 text-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2">
+             class="mb-4 bg-orange-600/90 text-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2">
             <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M5 13l4 4L19 7"></path>
             </svg>
@@ -20,20 +20,20 @@
             <table class="min-w-full divide-y divide-gray-700">
                 <thead class="bg-gray-800">
                     <tr>
-                        <th class="px-4 py-2 text-left">Created</th>
                         <th class="px-4 py-2 text-left">Nama</th>
                         <th class="px-4 py-2 text-left">Email</th>
                         <th class="px-4 py-2 text-left">Role</th>
+                        <th class="px-4 py-2 text-center">Created</th>
                         <th class="px-4 py-2 text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-700">
                     @foreach($users as $user)
                         <tr class="hover:bg-gray-800 transition">
-                            <td class="px-4 py-2">{{ $user->created_at->format('Y-m-d') }}</td>
                             <td class="px-4 py-2">{{ $user->name }}</td>
                             <td class="px-4 py-2">{{ $user->email }}</td>
                             <td class="px-4 py-2">{{ $user->role }}</td>
+                            <td class="px-4 py-2">{{ $user->created_at->format('l, Y-m-d') }} <span><br>{{ $user->created_at->format('h:i') }}</span> </td>
                             <td class="px-4 py-2 flex justify-center gap-3">
                                 <button 
                                     @click="confirmAction = 'kick'; confirmUser = {{ $user->id }}"
@@ -65,7 +65,7 @@
             </table>
         </div>
         <!-- Pagination -->
-        <div class="mt-4">
+        <div class="mt-4 px-10">
             {{ $users->links() }}
         </div>
     </div>

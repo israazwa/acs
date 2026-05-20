@@ -44,7 +44,7 @@ class UserMng extends Component
         }
 
         $user = User::findOrFail($userId);
-        $user->role = $user->role === 'user' ? 'admin' : 'user';
+        $user->role = $user->role === 'siswa' ? 'admin' : 'siswa';
         $user->save();
 
         $this->dispatch('notify', message: "Role {$user->name} berhasil diubah menjadi {$user->role}!");

@@ -27,12 +27,21 @@
 
     <!-- Detail Hasil -->
     @if($selectedPelajaran)
-        <h2 class="text-xl font-bold mb-4 text-white">Hasil Ujian: {{ $selectedPelajaran->nama_pelajaran }}</h2>
+        <h2 class="text-xl font-bold mb-4 text-white uppercase">Hasil Ujian: <span class="text-orange-300">{{ $selectedPelajaran->nama_pelajaran }}</span> </h2>
+        <div class="flex justify-between content-between">
+            <button wire:click="exportPdf"
+                class="px-4 py-2 mb-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-sm shadow-md transition">
+                    Cetak PDF
+            </button>
+            <p class="text-right text-gray-200">
+            Dicetak pada: {{ \Carbon\Carbon::now()->translatedFormat('l, d F Y H:i') }}
+            </p>
+        </div>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border rounded-lg shadow">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="px-4 py-2 text-left">Nama Murid</th>
+                        <th class="px-4 py-2 text-left">Nama</th>
                         <th class="px-4 py-2 text-left">Nilai</th>
                         <th class="px-4 py-2 text-left">Status</th>
                         <th class="px-4 py-2 text-left">Aksi</th>
